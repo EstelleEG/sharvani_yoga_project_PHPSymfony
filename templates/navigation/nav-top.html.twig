@@ -1,0 +1,51 @@
+
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="{{ path("app_home") }}">About me</a></li>
+            <li class="uk-active"><a href="{{ path("app_home") }}">Book a class</a></li>
+            <li class="uk-active"><a href="{{ path("app_home") }}">Contact</a></li>
+            {#
+            <li>
+                <a href="#"></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">About me</a></li>
+                        <li><a href="#">Book a class</a></li>
+                        <li class="uk-nav-header">Header</li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </li>
+            #}
+           
+        </ul>
+
+    </div>
+    <div class="uk-navbar-right">
+
+        <ul class="uk-navbar-nav">
+            
+            {% if is_granted('ROLE_MEMBER') %}
+            <li>
+                <a href="#">Hello {{ app.user.name }} {{ app.user.name }}</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="{{ path("app_profil") }}">My account</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path("app_admin") }}">Admin</a></li>
+                        {% endif %}
+                        <li><a href="{{ path("app_logout") }}">Log out</a></li>
+                    </ul>
+                </div>
+            </li>
+            {% else %}
+            <li><a href="{{ path("app_login") }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
