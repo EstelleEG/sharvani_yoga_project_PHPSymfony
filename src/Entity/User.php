@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use App\Entity\Interfaces\IRole;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -27,7 +28,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, IRole
     #[ORM\Column(type: 'string')]
     private $password;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable:true)]
     private $name;
 
     #[ORM\Column(type: 'datetime')]
@@ -36,7 +37,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, IRole
     //for roles
     public function __construct()
     {
-        $this->setCreatedAt(new \DateTime("now"));
+        $this->setCreatedAt(new DateTime("now"));
         $this->setRoles([self::ROLE_MEMBER]);//de base, we set a role member for all
     }
 

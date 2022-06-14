@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User; 
+use DateTime;
 use App\Entity\Interfaces\IRole; 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -24,7 +25,7 @@ class UserFixture extends Fixture implements IRole
         $user->setName("Estelle");
         $user->setEmail("admin@admin.com");
         $user->addRole(self::ROLE_ADMIN);
-        $user->setCreatedAt(new \DateTime('now'));
+        $user->setCreatedAt(new DateTime('now'));
         $user->setPassword($this->userPasswordHasher->hashPassword(
             $user, 
             "123zzz"
