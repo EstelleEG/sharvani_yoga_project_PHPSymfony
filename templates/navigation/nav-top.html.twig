@@ -7,7 +7,7 @@
             <li class="uk-active"><a href="{{ path("app_home") }}">Book a class</a></li>
             <li class="uk-active"><a href="{{ path("app_home") }}">Contact</a></li>
             <p>LEARN YOGA TODAY</p>
-            <p>Body & Mind</p>
+            <p>Body &amp; Mind</p>
             {#
             <li>
                 <a href="#"></a>
@@ -33,8 +33,8 @@
         <ul class="uk-navbar-nav">
             
             {% if is_granted('ROLE_MEMBER') %}
-            <li>
-                <a href="#">Hello {{ app.user.name }} {{ app.user.name }}</a>
+            <li>{{ app.user.name }} {{ app.user.name }}
+                <a href="#">Hello </a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li><a href="{{ path("app_profil") }}">My account</a></li>
